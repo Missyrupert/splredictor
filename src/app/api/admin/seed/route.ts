@@ -15,6 +15,9 @@ const ROUND_34_PREDICTIONS = [
   { userName: 'Jase',  fixtureId: '1',  home: 4, away: 1, ts: '2026-04-25T17:25:00Z' },
   { userName: 'Ebbsy', fixtureId: '1',  home: 1, away: 1, ts: '2026-04-25T17:25:00Z' },
   { userName: 'Eug',   fixtureId: '1',  home: 3, away: 1, ts: '2026-04-25T17:25:00Z' },
+  // Rangers v Motherwell predictions entered before kickoff
+  { userName: 'Eug',   fixtureId: '13', home: 3, away: 2, ts: '2026-04-26T14:55:00Z' },
+  { userName: 'Jase',  fixtureId: '13', home: 3, away: 1, ts: '2026-04-26T14:55:00Z' },
 ];
 
 export async function POST() {
