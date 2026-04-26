@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+dist/
+
+# Environment / secrets
+.env
+.env.local
+.env*.local
+
+# User data (predictions and results — local only)
+data/*.json
+
+# Old Vite source archive (not part of the app)
+src-archive/
+
+# Old duplicate config file (replaced by tailwind.config.ts)
+tailwind.config.js
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.local
+

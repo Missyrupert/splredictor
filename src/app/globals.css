@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #020912;
+  color: #e2eaf5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove number input spinners */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+input[type=number] { -moz-appearance: textfield; }
+
+/* Slim scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #153457; border-radius: 9999px; }
+
+:focus-visible { outline: 2px solid #22c55e; outline-offset: 2px; }
+::selection { background-color: #22c55e33; color: #e2eaf5; }
+
+/* Subtle tartan crosshatch for hero backgrounds */
+.tartan-bg {
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 38px,
+      rgba(200,16,46,0.05) 38px, rgba(200,16,46,0.05) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 38px,
+      rgba(200,16,46,0.05) 38px, rgba(200,16,46,0.05) 40px),
+    repeating-linear-gradient(0deg, transparent, transparent 78px,
+      rgba(0,93,184,0.045) 78px, rgba(0,93,184,0.045) 82px),
+    repeating-linear-gradient(90deg, transparent, transparent 78px,
+      rgba(0,93,184,0.045) 78px, rgba(0,93,184,0.045) 82px);
+}
