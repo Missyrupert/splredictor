@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import TeamBadge from '@/components/TeamBadge';
 import type { LeaderboardEntry } from '@/types';
-import type { TeamStanding } from '@/lib/league-table';
 
 // ── Prediction leaderboard ────────────────────────────────────────────────────
 
@@ -107,101 +106,6 @@ function PredictionLeaderboard() {
   );
 }
 
-// ── League table ──────────────────────────────────────────────────────────────
-
-const POSITION_COLOUR = [
-  'text-emerald-400',  // 1st
-  'text-emerald-400',  // 2nd
-  'text-emerald-400',  // 3rd
-  'text-slate-300',    // 4th
-  'text-slate-400',    // 5th
-  'text-tartan-400',   // 6th (bottom)
-];
-
-function LeagueTable() {
-  const [table, setTable] = useState<TeamStanding[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch('/api/league-table')
-      .then((r) => r.json())
-      .then((data: TeamStanding[]) => { setTable(data); setLoading(false); })
-      .catch(() => setLoading(false));
-  }, []);
-
-  if (loading) return <p className="text-slate-500 text-sm py-4 text-center">Loading…</p>;
-
-  return (
-    <section className="space-y-3">
-      <div className="flex items-center gap-3">
-        <h2 className="text-lg font-black text-white">League Table</h2>
-        <div className="flex-1 h-px bg-pitch-700" />
-        <span className="text-xs text-slate-600">Live · updates with results</span>
-      </div>
-
-      <div className="bg-pitch-800 border border-pitch-600 rounded-2xl overflow-hidden">
-        {/* Header */}
-        <div className="grid grid-cols-[2rem_1fr_repeat(8,2.5rem)] gap-0 px-3 py-2 border-b border-pitch-700">
-          <span />
-          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Club</span>
-          {['MP','W','D','L','GF','GA','GD','Pts'].map((h) => (
-            <span key={h} className="text-[10px] font-bold text-slate-500 uppercase tracking-wider text-center">
-              {h}
-            </span>
-          ))}
-        </div>
-
-        {/* Rows */}
-        {table.map((row, i) => (
-          <div
-            key={row.team}
-            className={`grid grid-cols-[2rem_1fr_repeat(8,2.5rem)] gap-0 px-3 py-2.5 items-center
-              ${i < table.length - 1 ? 'border-b border-pitch-700/60' : ''}
-              ${i % 2 === 0 ? '' : 'bg-pitch-900/30'}
-            `}
-          >
-            {/* Position */}
-            <span className={`text-sm font-black ${POSITION_COLOUR[i] ?? 'text-slate-400'}`}>
-              {i + 1}
-            </span>
-
-            {/* Club */}
-            <div className="flex items-center gap-2 min-w-0">
-              <TeamBadge team={row.team} size="sm" />
-              <span className="text-sm font-bold text-slate-200 truncate">{row.team}</span>
-            </div>
-
-            {/* Stats */}
-            {[row.mp, row.w, row.d, row.l, row.gf, row.ga, row.gd, row.pts].map((val, j) => {
-              const isPts = j === 7;
-              const isGD = j === 6;
-              const negative = isGD && val < 0;
-              return (
-                <span
-                  key={j}
-                  className={`text-sm text-center tabular-nums ${
-                    isPts
-                      ? 'font-black text-white'
-                      : negative
-                      ? 'text-tartan-400 font-semibold'
-                      : 'text-slate-400'
-                  }`}
-                >
-                  {isGD && val > 0 ? `+${val}` : val}
-                </span>
-              );
-            })}
-          </div>
-        ))}
-      </div>
-
-      <p className="text-xs text-slate-600 text-center">
-        Base standings: pre-split · updates automatically as results are entered
-      </p>
-    </section>
-  );
-}
-
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function LeaderboardPage() {
@@ -213,8 +117,6 @@ export default function LeaderboardPage() {
       </div>
 
       <PredictionLeaderboard />
-
-      <LeagueTable />
 
       {/* Scoring guide */}
       <div className="bg-pitch-800 border border-pitch-600 rounded-2xl p-4">
