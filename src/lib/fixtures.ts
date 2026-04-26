@@ -26,7 +26,7 @@ export const FIXTURES: Fixture[] = [
     roundNumber: 34,
     homeTeam: 'Rangers',
     awayTeam: 'Motherwell',
-    kickoff: '2026-04-26T15:00:00+01:00',
+    kickoff: '2099-05-01T15:00:00+01:00',
     venue: 'Ibrox',
   },
   // ── Round 35 ──────────────────────────────────────────────────────────
