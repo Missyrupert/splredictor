@@ -473,11 +473,15 @@ export default function AdminPage() {
 
                       {fixture.status === 'completed' && (
                         <button
-                          onClick={() => clearResult(fixture.id)}
+                          onClick={() => {
+                            if (window.confirm(`Delete result for ${fixture.homeTeam} v ${fixture.awayTeam}? This cannot be undone.`)) {
+                              clearResult(fixture.id);
+                            }
+                          }}
                           disabled={isSaving}
-                          className="px-4 py-2.5 rounded-xl font-bold text-sm bg-pitch-700 border border-pitch-600 text-slate-500 hover:text-tartan-400 hover:border-tartan-500/40 transition-all"
+                          className="px-4 py-2.5 rounded-xl font-bold text-sm bg-tartan-600/20 border border-tartan-500/40 text-tartan-400 hover:bg-tartan-600/40 transition-all whitespace-nowrap"
                         >
-                          ✕
+                          Clear Result
                         </button>
                       )}
                     </div>
