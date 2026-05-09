@@ -48,6 +48,14 @@ export const FIXTURES: Fixture[] = [
   },
   // ── Round 36 ──────────────────────────────────────────────────────────
   {
+    id: '14',
+    roundNumber: 36,
+    homeTeam: 'Falkirk',
+    awayTeam: 'Hibernian',
+    kickoff: '2026-05-09T15:00:00+01:00',
+    venue: 'Falkirk Stadium',
+  },
+  {
     id: '5',
     roundNumber: 36,
     homeTeam: 'Motherwell',
