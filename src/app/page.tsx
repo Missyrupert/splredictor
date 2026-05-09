@@ -37,7 +37,7 @@ export default function SelectPlayerPage() {
 
         {/* Hero */}
         <div className="text-center mb-10">
-          <div className="text-7xl mb-5 select-none">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
+          <div className="text-7xl mb-5 select-none">🏴</div>
           <h1 className="text-5xl font-black text-white uppercase leading-none tracking-tight">
             Top 6
           </h1>
@@ -51,7 +51,7 @@ export default function SelectPlayerPage() {
             Scottish Premiership · Top 6 Split · 2025/26
           </p>
           <p className="text-slate-600 text-xs mt-1">
-            Rounds 34–38 · 12 fixtures
+            Rounds 34–38 · 13 fixtures
           </p>
         </div>
 
